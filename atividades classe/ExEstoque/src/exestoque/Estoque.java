@@ -1,66 +1,80 @@
 package exestoque;
 
+    public class Estoque {
+    private String nome;
+    private int qtdAtual, qtdMinima;
 
-public class Estoque {
-    private String name;
-    private int qntdAtual;
-    private int qntdMinima;
-    private int qntd;
     
-    //construtores
-    public Estoque(){
-        name = name;
-        qntdAtual = qntdAtual;
-        qntdMinima = qntdMinima;
+        public Estoque(){
+        nome = "";
+        qtdAtual = 0;
+        qtdMinima = 0;
+    }
+    
+    public Estoque(String nome, int qtdAtual, int qtdMinima){
+        this.nome = nome;
         
+        if(qtdAtual>0)
+            this.qtdAtual = qtdAtual;
+        else 
+            qtdAtual = 0;
+        
+        if(qtdMinima>0)
+            this.qtdMinima = qtdMinima;
+        else 
+            qtdMinima = 0;
     }
     
-    public Estoque(String name, int qntdAtual, int qntdMinima){
-        this.name = name;
-        this.qntdAtual = qntdAtual;
-        this.qntdMinima = qntdMinima;
-    }
-
-    //metodo repor
-    public void repor(int qntd){
-        qntdAtual += qntd;
+    public void repor(int qtd){
+        qtdAtual = qtdAtual + qtd;
     }
     
-    //metodo dar baixa
-    public void darBaixa(int qntd){
-        qntdAtual -= qntd;
+    public void darBaixa(int qtd){
+        qtdAtual = qtdAtual - qtd;
     }
     
-    //getters e setters
-    public String getName() {
-        return name;
+    public String mostra(){
+        String x = "Nome:"+nome+"| Quantidade mínima: "+qtdMinima+"| Quantidade atual: "+qtdAtual;
+        return x;
+    }
+    
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public int getQntdAtual() {
-        return qntdAtual;
+    public int getQtdAtual() {
+        return qtdAtual;
     }
 
-    public void setQntdAtual(int qntdAtual) {
-        this.qntdAtual = qntdAtual;
+    public void setQtdAtual(int qtdAtual) {
+        if(qtdAtual>0)
+            this.qtdAtual = qtdAtual;
+        else 
+            qtdAtual = 0;
     }
 
-    public int getQntdMinima() {
-        return qntdMinima;
+    public int getQtdMinima() {
+        return qtdMinima;
     }
 
-    public void setQntdMinima(int qntdMinima) {
-        this.qntdMinima = qntdMinima;
+    public void setQtdMinima(int qtdMinima) {
+        if(qtdMinima>0)
+            this.qtdMinima = qtdMinima;
+        else
+            qtdMinima = 0;
     }
-        public int getQntd() {
-        return qntd;
-    }
+    public boolean precisaRepor(){
+        boolean need;
+        if(qtdAtual<=qtdMinima)
+            need=true;
+        else
+            need=false;
+        return need;
 
-    public void setQntd(int qntd) {
-        this.qntd = qntd;
     }
     
 }
