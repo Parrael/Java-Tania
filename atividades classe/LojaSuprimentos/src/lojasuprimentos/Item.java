@@ -24,8 +24,10 @@ public class Item {
     }
     
     //método ou função
-    public float getTotal(){
-        return quant*price; 
+    public double getTotal(){
+        double total;
+        total = this.quant*this.price; 
+        return total; 
     }
     
     

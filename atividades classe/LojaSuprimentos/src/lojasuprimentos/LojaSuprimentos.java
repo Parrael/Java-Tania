@@ -23,6 +23,10 @@ public class LojaSuprimentos {
         item1.setPrice(keyboard.nextFloat());
         
         System.out.println("o total é: "+ item1.getTotal());
+        
+        
+        item1.setQuant(-3);
+        System.out.println(""+ item1.getQuant());
     }
     
 }
