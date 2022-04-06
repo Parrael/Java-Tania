@@ -5,9 +5,9 @@ public class TESTAFUNCIONARIOS {
 
     public static void main(String[] args) {
       
-        Gerente ger1 = new Gerente();
-        Telefonista tel1 = new Telefonista();
-        Secretaria sec1 = new Secretaria();
+        Gerente ger1 = new Gerente(String name, float wage, String username, String Password);
+        Telefonista tel1 = new Telefonista(String name, float wage, int code);
+        Secretaria sec1 = new Secretaria(String name, float wage, int number);
         
         ger1.setWage(1000f);
         ger1.setName("Alejandre");
