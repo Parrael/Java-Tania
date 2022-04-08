@@ -5,10 +5,12 @@ public class TESTAFUNCIONARIOS {
 
     public static void main(String[] args) {
       
-        Gerente ger1 = new Gerente(String name, float wage, String username, String Password);
-        Telefonista tel1 = new Telefonista(String name, float wage, int code);
-        Secretaria sec1 = new Secretaria(String name, float wage, int number);
+        Gerente ger1 = new Gerente("Alejandro", 1000f, "Xandrão", 69420);
+        Telefonista tel1 = new Telefonista("Predo", 500f, 566);
+        Secretaria sec1 = new Secretaria("Donna", 450f, 027);
         
+        
+        /*
         ger1.setWage(1000f);
         ger1.setName("Alejandre");
         ger1.setUsername("Xandrão");
@@ -22,7 +24,7 @@ public class TESTAFUNCIONARIOS {
         sec1.setWage(450f);
         sec1.setName("Donna");
         sec1.setNumber(027);
-        
+        */
         System.out.println("Gerente: "+ger1.getName()+" | R$"+ ger1.getWage() +" | Username: "+ ger1.getUsername() +" | Por motivos de segurança, senha não serão apresentada.");
         System.out.println("Telefonista: "+tel1.getName()+" | R$"+ tel1.getWage() +" | Código: "+ tel1.getCode());
         System.out.println("Secretária: "+sec1.getName()+" | R$"+ sec1.getWage() +" | Ramal: "+ sec1.getNumber());
