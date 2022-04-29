@@ -21,17 +21,17 @@ public class ExeArraylist {
         c2.setSaldo(850);
         c2.setLimite(500);
     
-        ArrayList <Conta> lista = new ArrayList();
+        ArrayList <Conta> lista = new ArrayList(); //<Conta> restringe a familia de classes
         lista.add(p1);
         lista.add(c1);
         lista.add(c2);
         //lista.add("Tania"); dá erro
         
-        for(Conta c: lista){
+        for(Conta c: lista){ // percorre o arraylist [lista]
             c.mostra();
             System.out.println(c.getSaldo());
-            
-            
+                      
+           
             if(c instanceof Poupanca){
                 Poupanca p = (Poupanca)c;
                 System.out.println("taxa da poupança:"+ p.getTaxa());
