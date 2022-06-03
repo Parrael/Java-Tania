@@ -6,6 +6,10 @@ public class Jogo extends Produto{
         public Jogo(String descricao, float preco, String titulo, int faixaEtaria, String genero) {
         super(descricao, preco, titulo, faixaEtaria, genero);
     }
+
+    public Jogo() {
+    }
+        
 //get e set
 
     public String getDescricao() {
@@ -46,6 +50,11 @@ public class Jogo extends Produto{
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+    
+        @Override
+    public void exibir(){
+        System.out.println("Titulo: " + titulo + "\npreco: " + preco + "\nfaixa etaria: " + faixaEtaria + "\ngenero: " + genero + "\ndescricao: " + descricao);
     }
         
 }

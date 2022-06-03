@@ -1,5 +1,7 @@
 package projetolocadora;
 
+import java.util.Scanner;
+
 public class Cliente extends Pessoa implements IPessoa{
     protected String endereco;
     protected String telefone;
@@ -13,6 +15,10 @@ public class Cliente extends Pessoa implements IPessoa{
         this.endereco = endereco;
         this.telefone = telefone;
     }
+
+    public Cliente() {
+    }
+    
     
 
 //get e set
@@ -74,6 +80,10 @@ public class Cliente extends Pessoa implements IPessoa{
             System.out.println("Não possui aluguel em andamento.");
         }
         
+    }
+
+    boolean startsWith(Scanner teclado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
         

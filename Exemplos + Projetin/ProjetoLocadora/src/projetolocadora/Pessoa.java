@@ -10,6 +10,14 @@ public abstract class Pessoa {
         this.idade = idade;
         this.cpf = cpf;
     }
+
+    public Pessoa() {
+        nome = "";
+        idade = 0;
+        cpf = "";
+    }
+    
+    
     
     
 }

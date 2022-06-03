@@ -16,6 +16,14 @@ public class Produto {
         this.faixaEtaria = faixaEtaria;
         this.genero = genero;
     }
+
+    public Produto() {
+    }
     
+    
+    
+    public void exibir(){
+        System.out.println("Titulo: " + titulo + "\npreco: " + preco + "\nfaixa etaria: " + faixaEtaria + "\ngenero: " + genero + "\ndescricao: " + descricao);
+    }
     
 }

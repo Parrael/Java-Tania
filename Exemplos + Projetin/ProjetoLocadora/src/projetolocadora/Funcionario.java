@@ -11,6 +11,11 @@ public class Funcionario extends Pessoa implements IPessoa{
         this.cargaHoraria = cargaHoraria;
     }
 
+    public Funcionario(){
+    }
+    
+    
+
 //get e set
     public double getSalario() {
         return salario;

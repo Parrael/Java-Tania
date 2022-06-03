@@ -10,6 +10,10 @@ public class Filme extends Produto{
         this.duracao = duracao;
     }
 
+    public Filme() {
+    }
+    
+
 //get e set
     public float getDuracao() {
         return duracao;
@@ -59,4 +63,8 @@ public class Filme extends Produto{
         this.genero = genero;
     }
     
+    @Override
+    public void exibir(){
+        System.out.println("Titulo: " + titulo + "\npreco: " + preco + "\nfaixa etaria: " + faixaEtaria + "\ngenero: " + genero + "\ndescricao: " + descricao + "\nduracao: " + duracao);
+    }
 }
