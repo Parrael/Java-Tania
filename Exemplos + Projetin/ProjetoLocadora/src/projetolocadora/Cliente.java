@@ -18,6 +18,8 @@ public class Cliente extends Pessoa implements IPessoa{
 
     public Cliente() {
         super(nome, idade, cpf);
+        endereco = "";
+        telefone = "";
     }
     
     
