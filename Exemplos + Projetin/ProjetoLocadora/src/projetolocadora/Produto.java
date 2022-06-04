@@ -18,7 +18,7 @@ public class Produto {
     }
 
     public Produto() {
-        descrição = "";
+        descricao = "";
         preco = 0;
         titulo = "";
         faixaEtaria = 0;

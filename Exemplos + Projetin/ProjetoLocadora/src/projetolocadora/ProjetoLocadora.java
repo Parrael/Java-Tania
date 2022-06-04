@@ -186,6 +186,28 @@ public class ProjetoLocadora {
             }
         }
         
+            public void pesquisaProduto(){
+                System.out.println("Selecione uma opcao de busca:\n1- Descricao\n2- Preco \n3- Titulo \n4- Genero");
+                int opcao = teclado.nextInt();
+                switch(opcao){
+                    case '1':
+                        System.out.println("\n\nBusca por Descricao iniciada:");
+                    break;
+                    
+                    case '2':
+                        System.out.println("\n\nBusca por Preco iniciada:");
+                    break;
+                    
+                    case '3':
+                        System.out.println("\n\nBusca por Titulo iniciada:");
+                    break;
+                    
+                    case '4':
+                        System.out.println("\n\nBusca por Genero iniciada:");
+                    break;
+                    
+                }
+            }
     public static void main(String[] args) {
        
     }

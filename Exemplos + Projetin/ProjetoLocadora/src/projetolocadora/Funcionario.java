@@ -12,7 +12,9 @@ public class Funcionario extends Pessoa implements IPessoa{
     }
 
     public Funcionario(){
-        super(nome, idade, cpf);
+        nome = "";
+        idade = 0;
+        cpf = "";
         salario = 0;
         cargaHoraria = 0;
     }
