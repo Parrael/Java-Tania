@@ -8,6 +8,7 @@ public class Jogo extends Produto{
     }
 
     public Jogo() {
+        super(descricao, preco, titulo, faixaEtaria, genero);
     }
         
 //get e set
