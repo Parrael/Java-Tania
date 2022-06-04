@@ -11,6 +11,8 @@ public class Filme extends Produto{
     }
 
     public Filme() {
+        super(descricao, preco, titulo, faixaEtaria, genero);
+        duracao = 0;
     }
     
 
