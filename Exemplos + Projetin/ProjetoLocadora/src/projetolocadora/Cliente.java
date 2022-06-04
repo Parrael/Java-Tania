@@ -11,12 +11,13 @@ public class Cliente extends Pessoa implements IPessoa{
 
     public Cliente(String endereco, String telefone, String nome, int idade, String cpf) {
         
-        super(nome,idade,cpf);
+        super(nome, idade, cpf);
         this.endereco = endereco;
         this.telefone = telefone;
     }
 
     public Cliente() {
+        super(nome, idade, cpf);
     }
     
     
