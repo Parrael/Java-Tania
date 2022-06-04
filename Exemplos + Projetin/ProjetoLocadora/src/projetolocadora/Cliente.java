@@ -6,6 +6,7 @@ public class Cliente extends Pessoa implements IPessoa{
     protected String endereco;
     protected String telefone;
     protected boolean aluguelAndamento;
+    static Scanner teclado = new Scanner(System.in);
     
 //construtor
 
@@ -33,7 +34,12 @@ public class Cliente extends Pessoa implements IPessoa{
     }
 
     public void setEndereco(String endereco) {
-        this.endereco = endereco;
+        if("".equals(endereco)){
+            throw new IllegalArgumentException ("Camppo endereco não pode ser vazio");
+        }else{
+            this.endereco = endereco;
+        }
+       
     }
 
     public String getTelefone() {
@@ -41,15 +47,19 @@ public class Cliente extends Pessoa implements IPessoa{
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        if ("".equals(telefone)){
+            throw new IllegalArgumentException ("Campo telefone não pode ser vazio");
+        }else{
+            this.telefone = telefone;
+        }
     }
 
-    public boolean isAluguelAndamento() {
-        return aluguelAndamento;
+    public boolean getAluguelAndamento() {
+       return aluguelAndamento;
     }
 
     public void setAluguelAndamento(boolean aluguelAndamento) {
-        this.aluguelAndamento = aluguelAndamento;
+        this.aluguelAndamento=aluguelAndamento;
     }
 
     public String getNome() {
@@ -57,7 +67,11 @@ public class Cliente extends Pessoa implements IPessoa{
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if ("".equals(nome)){
+            throw new IllegalArgumentException ("Campo nome não pode ser vazio");
+        }else{
+            this.nome = nome;
+        }
     }
 
     public int getIdade() {
@@ -65,7 +79,11 @@ public class Cliente extends Pessoa implements IPessoa{
     }
 
     public void setIdade(int idade) {
-        this.idade = idade;
+        if (idade == 0){
+            throw new IllegalArgumentException ("Campo idade nao pode ser zero");
+        }else{
+            this.idade = idade;
+        }
     }
 
     public String getCpf() {
@@ -73,7 +91,11 @@ public class Cliente extends Pessoa implements IPessoa{
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        if ("".equals(cpf)){
+            throw new IllegalArgumentException ("Campo CPF não pode ser vazio");
+        }else{
+            this.cpf = cpf;
+        }
     }
 
     @Override

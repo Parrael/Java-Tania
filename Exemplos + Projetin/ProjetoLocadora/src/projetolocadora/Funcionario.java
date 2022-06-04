@@ -27,7 +27,11 @@ public class Funcionario extends Pessoa implements IPessoa{
     }
 
     public void setSalario(double salario) {
-        this.salario = salario;
+        if (salario <= 0){
+            throw new IllegalArgumentException ("Campo salario não pode ser zero");
+        }else{
+            this.salario = salario;
+        }
     }
 
     public int getCargaHoraria() {
@@ -35,7 +39,11 @@ public class Funcionario extends Pessoa implements IPessoa{
     }
 
     public void setCargaHoraria(int cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
+        if (cargaHoraria == 0){
+            throw new IllegalArgumentException ("Campo carga horaria não pode ser vazio");
+        }else{
+            this.cargaHoraria = cargaHoraria;
+        }
     }
 
     public String getNome() {
@@ -43,7 +51,11 @@ public class Funcionario extends Pessoa implements IPessoa{
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if ("".equals(nome)){
+            throw new IllegalArgumentException ("Campo nome não pode ser vazio");
+        }else{
+            this.nome = nome;
+        }
     }
 
     public int getIdade() {
@@ -51,7 +63,11 @@ public class Funcionario extends Pessoa implements IPessoa{
     }
 
     public void setIdade(int idade) {
-        this.idade = idade;
+        if (idade == 0){
+            throw new IllegalArgumentException ("Campo idade nao pode ser zero");
+        }else{
+            this.idade = idade;
+        }
     }
 
     public String getCpf() {
@@ -59,7 +75,11 @@ public class Funcionario extends Pessoa implements IPessoa{
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        if ("".equals(cpf)){
+            throw new IllegalArgumentException ("Campo CPF não pode ser vazio");
+        }else{
+            this.cpf = cpf;
+        }
     }
 
     @Override

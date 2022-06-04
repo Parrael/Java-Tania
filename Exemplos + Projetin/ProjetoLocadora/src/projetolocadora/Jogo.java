@@ -22,7 +22,11 @@ public class Jogo extends Produto{
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        if ("".equals(descricao)){
+            throw new IllegalArgumentException ("Campo descricao não pode ser vazio");
+        }else{
+            this.descricao = descricao;
+        }
     }
 
     public float getPreco() {
@@ -30,7 +34,11 @@ public class Jogo extends Produto{
     }
 
     public void setPreco(float preco) {
-        this.preco = preco;
+        if (preco <= 0){
+            throw new IllegalArgumentException ("Campo preco não pode ser zero ou negativo");
+        }else{
+            this.preco = preco;
+        }
     }
 
     public String getTitulo() {
@@ -38,7 +46,11 @@ public class Jogo extends Produto{
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        if ("".equals(titulo)){
+            throw new IllegalArgumentException ("Campo titulo não pode ser vazio");
+        }else{
+            this.titulo = titulo;
+        }
     }
 
     public int getFaixaEtaria() {
@@ -46,7 +58,11 @@ public class Jogo extends Produto{
     }
 
     public void setFaixaEtaria(int faixaEtaria) {
-        this.faixaEtaria = faixaEtaria;
+        if (faixaEtaria == 0){
+            throw new IllegalArgumentException ("Campo faixa etaria não pode ser zero");
+        }else{
+            this.faixaEtaria = faixaEtaria;
+        }
     }
 
     public String getGenero() {
@@ -54,7 +70,11 @@ public class Jogo extends Produto{
     }
 
     public void setGenero(String genero) {
-        this.genero = genero;
+        if ("".equals(genero)){
+            throw new IllegalArgumentException ("Campo genero não pode ser vazio");
+        }else{
+            this.genero = genero;
+        }
     }
     
         @Override
