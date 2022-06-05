@@ -291,10 +291,10 @@ import java.util.Scanner;
     public void pesquisaFuncionario(){
         System.out.println("Digite o nome do funcionario que deseja pesquisar");    
         String pesquisar = teclado.nextLine();
-        for(Funcionario func1: listaFunc){
-            if (func1.getNome().startsWith(pesquisar)){
-                System.out.println("==============================================================");
-                func1.exibir();
+            for(Funcionario func1: listaFunc){
+                if (func1.getNome().startsWith(pesquisar)){
+                    System.out.println("==============================================================");
+                    func1.exibir();
             }
         }
     }
@@ -303,25 +303,147 @@ import java.util.Scanner;
     public void pesquisaProduto(){
         System.out.println("Selecione uma opcao de busca:\n1- Descricao\n2- Preco \n3- Titulo \n4- Genero");
         int opcao = teclado.nextInt();
+        String pesquisar;
+
         switch(opcao){
-            case '1':
-                System.out.println("\n\nBusca por Descricao iniciada:");
+            case 1:
+                System.out.println("\n\n====Busca por Descricao iniciada:====");
+                System.out.println("\n\nDigite a descrição do produto que deseja encontrar");
+                pesquisar = teclado.nextLine();
+                    for(Filme fil1: listaFil){
+                        if (fil1.getDescricao().startsWith(pesquisar)){
+                            System.out.println("==============================================================");
+                            fil1.exibir();
+                        }
+                    }
+                    for(Jogo j1: listaJ){
+                        if (j1.getDescricao().startsWith(pesquisar)){
+                            System.out.println("==============================================================");
+                            j1.exibir();
+                        }
+                    }
                 break;
                     
-            case '2':
-                System.out.println("\n\nBusca por Preco iniciada:");
+            case 2:
+                System.out.println("\n\n====Busca por Preco iniciada:====");
+                System.out.println("\n\nDigite o preco do produto que deseja encontrar");
+                float var = teclado.nextFloat();
+                    for(Filme fil1: listaFil){
+                        if (fil1.getPreco() == var){
+                            System.out.println("==============================================================");
+                            fil1.exibir();
+                        }
+                    }
+                    for(Jogo j1: listaJ){
+                        if (j1.getPreco() == var){
+                            System.out.println("==============================================================");
+                            j1.exibir();
+                        }
+                    }
                 break;
                     
-            case '3':
-                System.out.println("\n\nBusca por Titulo iniciada:");
+            case 3:
+                System.out.println("\n\n====Busca por Titulo iniciada:====");
+                System.out.println("\n\nDigite o titulo do produto que deseja encontrar");
+                pesquisar = teclado.nextLine();
+                    for(Filme fil1: listaFil){
+                        if (fil1.getTitulo().startsWith(pesquisar)){
+                            System.out.println("==============================================================");
+                            fil1.exibir();
+                        }
+                    }
+                    for(Jogo j1: listaJ){
+                        if (j1.getTitulo().startsWith(pesquisar)){
+                            System.out.println("==============================================================");
+                            j1.exibir();
+                        }
+                    }
                 break;
                     
-            case '4':
-                System.out.println("\n\nBusca por Genero iniciada:");
+            case 4:
+                System.out.println("\n\n====Busca por Genero iniciada:=====");
+                System.out.println("\n\nDigite o genero do produto que deseja encontrar");
+                pesquisar = teclado.nextLine();
+                    for(Filme fil1: listaFil){
+                        if (fil1.getGenero().startsWith(pesquisar)){
+                            System.out.println("==============================================================");
+                            fil1.exibir();
+                        }
+                    }
+                    for(Jogo j1: listaJ){
+                        if (j1.getGenero().startsWith(pesquisar)){
+                            System.out.println("==============================================================");
+                            j1.exibir();
+                        }
+                    }
                 break;
-                    
+                
+            default:
+                System.out.println("\n\n====Opcao invalida selecionada=====");
+                break;    
+        }}
+    
+    //MÉTODOS "PADRÕES" DE CLIENTE
+    
+    public void clienteMaiorIdade(){
+        int maiorIdade=0;
+        for(Cliente c1: listaC){
+            if (c1.getIdade()>maiorIdade){
+            maiorIdade = c1.getIdade();
+            }
         }
-    }          
+        for(Cliente c1: listaC){
+                if (c1.getIdade() == maiorIdade){
+                    System.out.println("==============================================================");
+                    c1.exibir();
+                }
+            }
+    }
+    
+    public void clienteMenorIdade(){
+        int menorIdade=999;
+        for(Cliente c1: listaC){
+            if (c1.getIdade()<menorIdade){
+            menorIdade = c1.getIdade();
+            }
+        }
+        for(Cliente c1: listaC){
+                if (c1.getIdade() == menorIdade){
+                    System.out.println("==============================================================");
+                    c1.exibir();
+                }
+            }
+    }
+    
+    public void clienteMaiorQue60(){
+        int count = 0;
+        for(Cliente c1: listaC) {
+            if (c1.getIdade()>60)
+                count++;
+        }
+        System.out.println("\n O numero de clientes que possuem mais de sessenta anos é de: " + count + " clientes");
+    }
+    
+    public void clienteMenorQue18(){
+        int count = 0;
+        for(Cliente c1: listaC) {
+            if (c1.getIdade()<18)
+                count++;
+        }
+        System.out.println("\n O numero de clientes que possuem menor de dezoito anos é de: " + count + " clientes");
+    }
+    
+    public void clienteMediaIdade(){
+        float count = 0;
+        float soma = 0;
+        for(Cliente c1: listaC) {
+            soma += c1.getIdade();
+            count++;
+        }
+        System.out.println("\n A idade media dos clientes é de: " + soma/count + " anos");
+    }
+    
+    
     public static void main(String[] args) {
         
     }
