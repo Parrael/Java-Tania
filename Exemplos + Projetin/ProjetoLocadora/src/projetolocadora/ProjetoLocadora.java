@@ -444,6 +444,97 @@ import java.util.Scanner;
     }
     
     
+    //MÉTODOS "PADRÕES" DE CLIENTE
+
+    public void produtoMaisCaro(){
+        float maisCaro = 0;
+        for(Filme fil1: listaFil){
+            if (fil1.getPreco()>maisCaro){
+            maisCaro = fil1.getPreco();
+            }
+        }
+        for(Jogo j1: listaJ){
+            if (j1.getPreco()>maisCaro){
+            maisCaro = j1.getPreco();
+            }
+        }
+        for(Filme fil1: listaFil){
+                if (fil1.getPreco() == maisCaro){
+                    System.out.println("==============================================================");
+                    fil1.exibir();
+                }
+            }
+        for(Jogo j1: listaJ){
+                if (j1.getPreco() == maisCaro){
+                    System.out.println("==============================================================");
+                    j1.exibir();
+                }
+            }
+    }
+    
+    
+    public void produtoMaisBarato(){
+        float maisBarato = 999;
+        for(Filme fil1: listaFil){
+            if (fil1.getPreco()<maisBarato){
+            maisBarato = fil1.getPreco();
+            }
+        }
+        for(Jogo j1: listaJ){
+            if (j1.getPreco()<maisBarato){
+            maisBarato = j1.getPreco();
+            }
+        }
+        for(Filme fil1: listaFil){
+                if (fil1.getPreco() == maisBarato){
+                    System.out.println("==============================================================");
+                    fil1.exibir();
+                }
+            }
+        for(Jogo j1: listaJ){
+                if (j1.getPreco() == maisBarato){
+                    System.out.println("==============================================================");
+                    j1.exibir();
+                }
+            }
+    }
+    
+        
+        public float produtoCalculaMediaPreco(){
+        float count = 0;
+        float soma = 0;
+        for(Jogo j1: listaJ) {
+            soma += j1.getPreco();
+            count++;
+        }
+        for(Filme f1: listaFil) {
+            soma += f1.getPreco();
+            count++;
+        }
+        return soma/count;
+        }
+        
+        public void produtoExibeMediaPreco(){
+        System.out.println("\n A idade media dos clientes é de: " + produtoCalculaMediaPreco() + " anos");
+    }
+        public void produtoAcimaDaMediaPreco(){
+            float media = produtoCalculaMediaPreco();
+            int count = 0;
+            for(Filme fil1: listaFil){
+            if (fil1.getPreco()>media){
+            count++;
+            }
+        }
+        for(Jogo j1: listaJ){
+            if (j1.getPreco()>media){
+            count++;
+            }
+        }
+            System.out.println("\nQuantidade de produtos acima da media de preco é de: " + count);
+        }
+        
+    
+        
     public static void main(String[] args) {
         
     }
