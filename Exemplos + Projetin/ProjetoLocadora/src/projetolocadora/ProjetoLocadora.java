@@ -28,7 +28,7 @@ import java.util.Scanner;
        do{
         try{
         System.out.println("\nDigite o CPF do cliente: ");
-        teclado.nextLine();
+        System.out.println("(Digite um valor e não insira pontos ou traços)");
         c1.setCpf(teclado.nextLine());
        }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -57,7 +57,6 @@ import java.util.Scanner;
        do{
         try{
             System.out.println("\nDigite o telefone do cliente: ");
-            teclado.nextLine();
             c1.setTelefone(teclado.nextLine());
        }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -91,6 +90,7 @@ import java.util.Scanner;
         do{
         try{
             System.out.println("\nDigite o CPF do funcionario: ");
+            System.out.println("(Digite um valor e não insira pontos ou traços)");
             teclado.nextLine();
             func1.setCpf(teclado.nextLine());
        }catch (IllegalArgumentException e) {
@@ -240,18 +240,17 @@ import java.util.Scanner;
     public static void excluiCliente(){
         String excluir;
         do{
-            System.out.println("Digite o CPF do cliente que deseja excluir: ");
+            System.out.println("  Digite o CPF do cliente que deseja excluir: ");
             System.out.println("(Digite um valor e não insira pontos ou traços)");
+            excluir=teclado.next();
             teclado.nextLine();
-            excluir = teclado.nextLine();
             }while(excluir.isEmpty() || excluir.contains("."));
         for(Cliente c1: listaC){
             if (c1.getCpf().startsWith(excluir)){
                 System.out.println("==============================================================");
                 c1.exibir();
                 System.out.println("==============================================================");
-                System.out.println("Deseja excluir este cadastro? (s/n)");
-                teclado.nextLine();
+                /*System.out.println("Deseja excluir este cadastro? (s/n)");
                 String sn= teclado.nextLine();
                 do{
                     if(sn.equals("s")){
@@ -261,7 +260,7 @@ import java.util.Scanner;
                 }else if (sn.equals("n")){
                     System.out.println("\n Exclusao cancelada");
                 }
-                }while(!sn.equals("s")||!sn.equals("n"));
+                }while(!sn.equals("s")||!sn.equals("n"));*/
             }else{
                 System.out.println("Esse cpf não está cadastrado");
                 }
@@ -644,7 +643,7 @@ import java.util.Scanner;
         opcao = teclado.nextInt();
         switch(opcao){
             case 1 /*cadastro*/:
-                System.out.println("\n\n Selecione a opcao que deseja utilizar: \n\t ◉ 1- Cliente \n\t ◉ 2- Funcionario \n\t ◉ 3- Filme  \n\t ◉ 4- Jogo \n\t ◉ 0- Finalizar Programa");
+                System.out.println("\n\n Selecione a opcao que deseja cadastrar: \n\t ◉ 1- Cliente \n\t ◉ 2- Funcionario \n\t ◉ 3- Filme  \n\t ◉ 4- Jogo \n\t ◉ 0- Finalizar Programa");
                 opcao = teclado.nextInt();
                 switch(opcao){
                     case 1 /*cliente*/:
@@ -669,7 +668,7 @@ import java.util.Scanner;
                 }
             break;
             case 2 /*buscar*/:
-                System.out.println("\n\n Selecione a opcao que deseja utilizar: \n\t ◉ 1- Cliente \n\t ◉ 2- Funcionario \n\t ◉ 3- Produto \n\t ◉ 0- Finalizar Programa");
+                System.out.println("\n\n Selecione a opcao que deseja buscar: \n\t ◉ 1- Cliente \n\t ◉ 2- Funcionario \n\t ◉ 3- Produto \n\t ◉ 0- Finalizar Programa");
                 opcao = teclado.nextInt();
                 switch(opcao){
                     case 1 /*cliente*/:
@@ -691,6 +690,8 @@ import java.util.Scanner;
                 }
             break;
             case 3/*excluir*/:
+                System.out.println("\n\n Selecione a opcao que deseja excluir: \n\t ◉ 1- Cliente \n\t ◉ 2- Funcionario \n\t ◉ 3- Filme  \n\t ◉ 4- Jogo \n\t ◉ 0- Finalizar Programa");
+                opcao = teclado.nextInt();
                 switch(opcao){
                     case 1 /*cliente*/:
                         excluiCliente();
