@@ -5,7 +5,7 @@ public class Filme extends Produto{
 
 //construtor
 
-    public Filme(float duracao, String descricao, float preco, String titulo, int faixaEtaria, String genero) {
+    public Filme(String titulo, float preco, int faixaEtaria, float duracao, String genero, String descricao){
         super(descricao, preco, titulo, faixaEtaria, genero);
         this.duracao = duracao;
     }

@@ -102,7 +102,7 @@ import java.util.Scanner;
         
         do{
         try{
-            System.out.println("\nDigite o salario do funcionario: ");
+            System.out.println("\nDigite o salario mensal do funcionario: ");
             func1.setSalario(teclado.nextDouble());
        }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -111,7 +111,7 @@ import java.util.Scanner;
        
         do{
             try{    
-            System.out.println("\nDigite a carga horaria do funcionario: ");
+            System.out.println("\nDigite a carga horaria semanal do funcionario: ");
             func1.setCargaHoraria(teclado.nextInt());
        }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -145,6 +145,7 @@ import java.util.Scanner;
         do{
             try{    
             System.out.println("\nDigite a faixa etaria do filme: ");
+            System.out.println("(Considere 1 para faixas etárias livres.)");
             fil1.setFaixaEtaria(teclado.nextInt());
        }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -206,7 +207,7 @@ import java.util.Scanner;
         
         do{
             try{    
-            System.out.println("\nDigite a faixa etaria do jogo: ");
+                System.out.println("\nDigite a faixa etaria do jogo: ");
                 System.out.println("(Considere 1 para faixas etárias livres.)");
             j1.setFaixaEtaria(teclado.nextInt());
        }catch (IllegalArgumentException e) {
@@ -240,6 +241,7 @@ import java.util.Scanner;
     //MÉTODOS PARA EXCLUIR
     public static void excluiCliente(){
         String excluir;
+        String sn;
         do{
             System.out.println("  Digite o CPF do cliente que deseja excluir: ");
             System.out.println("(Digite um valor e não insira pontos ou traços)");
@@ -251,8 +253,8 @@ import java.util.Scanner;
                 System.out.println("==============================================================");
                 c1.exibir();
                 System.out.println("==============================================================");
-                /*System.out.println("Deseja excluir este cadastro? (s/n)");
-                String sn= teclado.nextLine();
+                System.out.println("Deseja excluir este cadastro? (s/n)");
+                sn= teclado.nextLine();
                 do{
                     if(sn.equals("s")){
                     listaC.remove(c1);
@@ -260,8 +262,9 @@ import java.util.Scanner;
                     break;
                 }else if (sn.equals("n")){
                     System.out.println("\n Exclusao cancelada");
+                    break;
                 }
-                }while(!sn.equals("s")||!sn.equals("n"));*/
+                }while(!sn.equals("s")||!sn.equals("n"));
             }else{
                 System.out.println("Esse cpf não está cadastrado");
                 }
@@ -270,6 +273,7 @@ import java.util.Scanner;
         
     public static void excluiFuncionario(){
         String excluir;
+        String sn;
         do{
             System.out.println("Digite o CPF do funcionário que deseja excluir: ");
             System.out.println("(Digite um valor e não insira pontos ou traços)");
@@ -283,7 +287,7 @@ import java.util.Scanner;
                 System.out.println("==============================================================");
                 System.out.println("Deseja excluir este cadastro? (s/n)");
                 teclado.nextLine();
-                String sn= teclado.nextLine();
+                sn= teclado.nextLine();
                 do{
                     if(sn.equals("s")){
                     listaFunc.remove(func1);
@@ -301,6 +305,7 @@ import java.util.Scanner;
         
     public static void excluiFilme(){
         String excluir;
+        String sn;
         do{
             System.out.println("Digite o titulo do filme que deseja excluir: ");
             teclado.nextLine();
@@ -313,7 +318,7 @@ import java.util.Scanner;
                 System.out.println("==============================================================");
                 System.out.println("Deseja excluir este cadastro? (s/n)");
                 teclado.nextLine();
-                String sn = teclado.next();
+                sn = teclado.next();
                 do{
                     if(sn.equals("s")){
                     listaFil.remove(fil1);
@@ -321,7 +326,8 @@ import java.util.Scanner;
                     break;
                 }else if (sn.equals("n"))
                     System.out.println("\n Exclusao cancelada");
-                }while(!sn.equals("s")||!sn.equals("n"));
+                    break;
+                }while(sn.equals("s")||!sn.equals("n"));
             }else{
                 System.out.println("Esse titulo não está cadastrado");
                 }
@@ -330,6 +336,7 @@ import java.util.Scanner;
         
     public static void excluiJogo(){
         String excluir;
+        String sn;
         do{
             System.out.println("Digite o titulo do jogo que deseja excluir: ");
             teclado.nextLine();
@@ -342,7 +349,7 @@ import java.util.Scanner;
                 System.out.println("==============================================================");
                 System.out.println("Deseja excluir este cadastro? (s/n)");
                 teclado.nextLine();
-                String sn = teclado.nextLine();
+                sn = teclado.nextLine();
                 do{
                     if(sn.equals("s")){
                     listaJ.remove(j1);
@@ -393,8 +400,9 @@ import java.util.Scanner;
                 if (func1.getNome().startsWith(pesquisar)){
                     System.out.println("==============================================================");
                     func1.exibir();
+                }
             }
-        }
+            System.out.println("==============================================================\n\n");
     }
         
             
@@ -647,12 +655,23 @@ import java.util.Scanner;
         
         public static void atribuiFuncPadrao(){
             Funcionario func1 = new Funcionario();
-            func1.setNome("João");
+            func1.setNome("Joao");
             func1.setIdade(19);
             func1.setCpf("07165289604");
             func1.setSalario(2499.99);
             func1.setCargaHoraria(30);
             listaFunc.add(func1);
+        }
+        
+        public static void atribuiFilPadrao(){
+            Filme fil1 = new Filme();
+            fil1.setTitulo("Jogos Vorazes");
+            fil1.setPreco(50);
+            fil1.setFaixaEtaria(14);
+            fil1.setGenero("acao");
+            fil1.setDuracao(2);
+            fil1.setDescricao("Filme sobre adolescentes que lutam ate a morte");
+            listaFil.add(fil1);
         }
         
         public static void atribuiJpadrao(){
@@ -662,15 +681,19 @@ import java.util.Scanner;
             j1.setGenero("acao");
             j1.setPreco(120);
             j1.setTitulo("Halo Reach");
-            
+            listaJ.add(j1);
         }
         
     public static void main(String[] args) {
         System.out.println("\n======================== Inicio da Execucao ========================");
-        int opcao = 0;
+        int opcao;
+        atribuiCliPadrao();
+        atribuiFuncPadrao();
+        atribuiFilPadrao();
+        atribuiJpadrao();
         
         do{
-        System.out.println("\n\n Selecione a opcao que deseja utilizar: \n\t ◉ 1- Cadastrar \n\t ◉ 2- Buscar \n\t ◉ 3- Excluir \n\t ◉ 0- Finalizar Programa");
+        System.out.println("\n\n Selecione a opcao que deseja utilizar: \n\t ◉ 1- Cadastrar \n\t ◉ 2- Buscar \n\t ◉ 3- Excluir \n\t ◉ 4- Outros \n\t ◉ 0- Finalizar Programa");
         opcao = teclado.nextInt();
         switch(opcao){
             case 1 /*cadastro*/:
@@ -721,7 +744,7 @@ import java.util.Scanner;
                 }
             break;
             case 3/*excluir*/:
-                System.out.println("\n\n Selecione a opcao que deseja excluir: \n\t ◉ 1- Cliente \n\t ◉ 2- Funcionario \n\t ◉ 3- Filme  \n\t ◉ 4- Jogo \n\t ◉ 0- Finalizar Programa");
+                System.out.println("\n\n Selecione a opcao que deseja excluir: \n\t ◉ 1- Cliente \n\t ◉ 2- Funcionario \n\t ◉ 3- Filme \n\t ◉ 4- Jogo \n\t ◉ 0- Finalizar Programa");
                 opcao = teclado.nextInt();
                 switch(opcao){
                     case 1 /*cliente*/:
@@ -745,7 +768,36 @@ import java.util.Scanner;
                     break;
                 } 
             break;
-            
+            case 4:
+                System.out.println("n\n Selecione a opcao que deseja: \n\t ◉ 1- Quantidade de clientes com mais de 60 anos \n\t ◉ 2- Quantidade de clientes com menos de 18 anos \n\t ◉ 3- Cliente "
+                        + "mais jovem \n\t ◉ 4- Cliente mais velho \n\t ◉ 5- Calcular media de idades \n\t ◉ 6- Consultar produto mais caro \n\t ◉ 7- Conslutar produto mais barato \n\t ◉ 8- Calcular media de precos");
+                opcao = teclado.nextInt();
+                switch(opcao){
+                    case 1:
+                        clienteMaiorQue60();
+                        break;
+                    case 2:
+                        clienteMenorQue18();
+                        break;
+                    case 3:
+                        clienteMenorIdade();
+                        break;
+                    case 4:
+                        clienteMaiorIdade();
+                        break;
+                    case 5:
+                        clienteMediaIdade();
+                        break;
+                    case 6:
+                        produtoMaisCaro();
+                        break;
+                    case 7:
+                        produtoMaisBarato();
+                        break;
+                    case 8:
+                        produtoExibeMediaPreco();
+                }
+                break;
             case 0 /*finalizar*/:
             break;
             

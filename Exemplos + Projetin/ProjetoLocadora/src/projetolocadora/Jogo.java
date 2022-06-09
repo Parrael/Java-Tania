@@ -3,7 +3,7 @@ package projetolocadora;
 public class Jogo extends Produto{
     
 //construtor
-        public Jogo(String descricao, float preco, String titulo, int faixaEtaria, String genero) {
+        public Jogo(String titulo, float preco, int faixaEtaria, String genero, String descricao) {
         super(descricao, preco, titulo, faixaEtaria, genero);
     }
 

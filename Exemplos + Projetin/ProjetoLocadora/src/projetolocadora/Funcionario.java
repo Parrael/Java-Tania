@@ -5,7 +5,7 @@ public class Funcionario extends Pessoa implements IPessoa{
     protected int cargaHoraria;
     
 //construtor
-    public Funcionario(double salario, int cargaHoraria, String nome, int idade, String cpf) {
+    public Funcionario(String nome, int idade, String cpf, int cargaHoraria, double salario) {
         super(nome, idade, cpf);
         this.salario = salario;
         this.cargaHoraria = cargaHoraria;
@@ -78,7 +78,7 @@ public class Funcionario extends Pessoa implements IPessoa{
         if ("".equals(cpf)){
             throw new IllegalArgumentException ("Campo CPF não pode ser vazio");
         }else{
-            this.cpf = cpf;
+            this.cpf=cpf;
         }
     }
 

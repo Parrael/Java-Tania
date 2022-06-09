@@ -10,7 +10,7 @@ public class Cliente extends Pessoa implements IPessoa{
     
 //construtor
 
-    public Cliente(String endereco, String telefone, String nome, int idade, String cpf) {
+    public Cliente(String nome, int idade, String cpf, String telefone,  String endereco) {
         
         super(nome, idade, cpf);
         this.endereco = endereco;
@@ -94,7 +94,7 @@ public class Cliente extends Pessoa implements IPessoa{
         if ("".equals(cpf)){
             throw new IllegalArgumentException ("Campo CPF não pode ser vazio");
         }else{
-            this.cpf = cpf;
+            this.cpf=cpf;
         }
     }
 
