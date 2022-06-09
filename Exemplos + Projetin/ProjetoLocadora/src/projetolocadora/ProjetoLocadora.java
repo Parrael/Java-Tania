@@ -1,6 +1,7 @@
 package projetolocadora;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
     public class ProjetoLocadora {
@@ -633,11 +634,41 @@ import java.util.Scanner;
             System.out.println("\nQuantidade de produtos acima da media de preco é de: " + count);
         }
         
-    
+        //Métodos de atribuições padrões:
+        public static void atribuiCliPadrao(){
+            Cliente c1 = new Cliente();
+            c1.setEndereco("RuaBomDia");
+            c1.setNome("Yudi");
+            c1.setCpf("07293354205");
+            c1.setIdade(29);
+            c1.setTelefone("70028922");
+            listaC.add(c1);
+        }
+        
+        public static void atribuiFuncPadrao(){
+            Funcionario func1 = new Funcionario();
+            func1.setNome("João");
+            func1.setIdade(19);
+            func1.setCpf("07165289604");
+            func1.setSalario(2499.99);
+            func1.setCargaHoraria(30);
+            listaFunc.add(func1);
+        }
+        
+        public static void atribuiJpadrao(){
+            Jogo j1 = new Jogo();
+            j1.setDescricao("Jogo de tiro em primeira pessoa, possui multiplayer e modo história");
+            j1.setFaixaEtaria(14);
+            j1.setGenero("acao");
+            j1.setPreco(120);
+            j1.setTitulo("Halo Reach");
+            
+        }
         
     public static void main(String[] args) {
         System.out.println("\n======================== Inicio da Execucao ========================");
         int opcao = 0;
+        
         do{
         System.out.println("\n\n Selecione a opcao que deseja utilizar: \n\t ◉ 1- Cadastrar \n\t ◉ 2- Buscar \n\t ◉ 3- Excluir \n\t ◉ 0- Finalizar Programa");
         opcao = teclado.nextInt();
