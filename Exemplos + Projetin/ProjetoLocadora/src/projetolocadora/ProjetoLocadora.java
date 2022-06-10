@@ -315,9 +315,10 @@ import java.util.Scanner;
                 }else if (sn.equals("n"))
                     System.out.println("\n Exclusao cancelada");
                 
-            }if(existeCPF == false){
-               System.out.println("Esse cpf não está cadastrado");   
             }
+            }
+            if(existeCPF == false){
+               System.out.println("Esse cpf não está cadastrado");   
             }
             }
         
