@@ -357,7 +357,7 @@ import java.util.Scanner;
                     System.out.println("\n Exclusao cancelada");
                 
             }if(existeTitulo == false){
-               System.out.println("Esse cpf não está cadastrado");   
+               System.out.println("Esse titulo não está cadastrado");   
             }
             }
             }
@@ -397,7 +397,7 @@ import java.util.Scanner;
                     System.out.println("\n Exclusao cancelada");
                 
             }if(existeTitulo == false){
-               System.out.println("Esse cpf não está cadastrado");   
+               System.out.println("Esse titulo não está cadastrado");   
             }
             }
             }
@@ -595,7 +595,7 @@ import java.util.Scanner;
     }
     
     
-    //MÉTODOS "PADRÕES" DE CLIENTE
+    //MÉTODOS "PADRÕES" DE PRODUTO
 
     public static void produtoMaisCaro(){
         float maisCaro = 0;
