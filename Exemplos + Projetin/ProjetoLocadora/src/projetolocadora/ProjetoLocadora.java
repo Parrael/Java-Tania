@@ -228,7 +228,6 @@ import java.util.Scanner;
         do{
             try{    
             System.out.println("\nDigite a descricao do jogo: ");
-            teclado.nextLine();
             j1.setDescricao(teclado.nextLine());
        }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -242,6 +241,9 @@ import java.util.Scanner;
     public static void excluiCliente(){
         String excluir;
         String sn;
+        boolean controle;
+        boolean existeCPF = false;
+        
         do{
             System.out.println("  Digite o CPF do cliente que deseja excluir: ");
             System.out.println("(Digite um valor e não insira pontos ou traços)");
@@ -250,30 +252,39 @@ import java.util.Scanner;
             }while(excluir.isEmpty() || excluir.contains("."));
         for(Cliente c1: listaC){
             if (c1.getCpf().startsWith(excluir)){
+                existeCPF = true;
                 System.out.println("==============================================================");
                 c1.exibir();
                 System.out.println("==============================================================");
+            do{
                 System.out.println("Deseja excluir este cadastro? (s/n)");
-                sn= teclado.nextLine();
-                do{
+                sn = teclado.nextLine();
+                if(sn.equals("s")){
+                    controle = true;
+                }else if (sn.equals("n")){
+                    controle = true;
+                }else{
+                    controle = false;
+                }
+                }while(controle == false);
                     if(sn.equals("s")){
                     listaC.remove(c1);
                     System.out.println("\n Exclusao concluida com sucesso!");
                     break;
-                }else if (sn.equals("n")){
+                }else if (sn.equals("n"))
                     System.out.println("\n Exclusao cancelada");
-                    break;
-                }
-                }while(!sn.equals("s")||!sn.equals("n"));
-            }else{
-                System.out.println("Esse cpf não está cadastrado");
-                }
+                
             }
+            if(existeCPF == false){
+               System.out.println("Esse cpf não está cadastrado");   
             }
+            }}
         
     public static void excluiFuncionario(){
         String excluir;
         String sn;
+        boolean controle;
+        boolean existeCPF = false;
         do{
             System.out.println("Digite o CPF do funcionário que deseja excluir: ");
             System.out.println("(Digite um valor e não insira pontos ou traços)");
@@ -282,28 +293,37 @@ import java.util.Scanner;
             }while(excluir.isEmpty() || excluir.contains("."));
         for(Funcionario func1: listaFunc){
             if (func1.getCpf().startsWith(excluir)){
+                existeCPF = true;
                 System.out.println("==============================================================");
                 func1.exibir();
                 System.out.println("==============================================================");
+            do{
                 System.out.println("Deseja excluir este cadastro? (s/n)");
-                teclado.nextLine();
-                sn= teclado.nextLine();
-                do{
+                sn = teclado.nextLine();
+                if(sn.equals("s")){
+                    controle = true;
+                }else if (sn.equals("n")){
+                    controle = true;
+                }else{
+                    controle = false;
+                }
+            }while(controle == false);
                     if(sn.equals("s")){
                     listaFunc.remove(func1);
                     System.out.println("\n Exclusao concluida com sucesso!");
                     break;
-                }else if (sn.equals("n")){
+                }else if (sn.equals("n"))
                     System.out.println("\n Exclusao cancelada");
-                }
-                }while(!sn.equals("s")||!sn.equals("n"));
-            }else{
-                System.out.println("Esse cpf não está cadastrado");
-                }
+                
+            }if(existeCPF == false){
+               System.out.println("Esse cpf não está cadastrado");   
+            }
             }
             }
         
     public static void excluiFilme(){
+        boolean controle;
+        boolean existeTitulo = false;
         String excluir;
         String sn;
         do{
@@ -313,30 +333,40 @@ import java.util.Scanner;
             }while(excluir.isEmpty());
         for(Filme fil1: listaFil){
             if (fil1.getTitulo().startsWith(excluir)){
+                existeTitulo = true;
                 System.out.println("==============================================================");
                 fil1.exibir();
                 System.out.println("==============================================================");
-                System.out.println("Deseja excluir este cadastro? (s/n)");
-                teclado.nextLine();
-                sn = teclado.next();
                 do{
+                
+                System.out.println("Deseja excluir este cadastro? (s/n)");
+                sn = teclado.nextLine();
+                if(sn.equals("s")){
+                    controle = true;
+                }else if (sn.equals("n")){
+                    controle = true;
+                }else{
+                    controle = false;
+                }
+                }while(controle == false);
                     if(sn.equals("s")){
                     listaFil.remove(fil1);
                     System.out.println("\n Exclusao concluida com sucesso!");
                     break;
                 }else if (sn.equals("n"))
                     System.out.println("\n Exclusao cancelada");
-                    break;
-                }while(sn.equals("s")||!sn.equals("n"));
-            }else{
-                System.out.println("Esse titulo não está cadastrado");
-                }
+                
+            }if(existeTitulo == false){
+               System.out.println("Esse cpf não está cadastrado");   
+            }
             }
             }
         
     public static void excluiJogo(){
         String excluir;
         String sn;
+        boolean controle;
+        boolean existeTitulo = false;
         do{
             System.out.println("Digite o titulo do jogo que deseja excluir: ");
             teclado.nextLine();
@@ -344,24 +374,31 @@ import java.util.Scanner;
             }while(excluir.isEmpty());
         for(Jogo j1: listaJ){
             if (j1.getTitulo().startsWith(excluir)){
+                existeTitulo = true;
                 System.out.println("==============================================================");
                 j1.exibir();
                 System.out.println("==============================================================");
+            do{
                 System.out.println("Deseja excluir este cadastro? (s/n)");
-                teclado.nextLine();
                 sn = teclado.nextLine();
-                do{
+                if(sn.equals("s")){
+                    controle = true;
+                }else if (sn.equals("n")){
+                    controle = true;
+                }else{
+                    controle = false;
+                }
+            }while(controle == false);
                     if(sn.equals("s")){
                     listaJ.remove(j1);
                     System.out.println("\n Exclusao concluida com sucesso!");
                     break;
-                }else if (sn.equals("n")){
+                }else if (sn.equals("n"))
                     System.out.println("\n Exclusao cancelada");
-                }
-                }while(!sn.equals("s")||!sn.equals("n"));
-            }else{
-                System.out.println("Esse titulo não está cadastrado");
-                }
+                
+            }if(existeTitulo == false){
+               System.out.println("Esse cpf não está cadastrado");   
+            }
             }
             }
            
@@ -429,6 +466,7 @@ import java.util.Scanner;
                             j1.exibir();
                         }
                     }
+                System.out.println("====Fim da busca:====");
                 break;
                     
             case 2:
@@ -447,6 +485,8 @@ import java.util.Scanner;
                             j1.exibir();
                         }
                     }
+                    System.out.println("====Fim da busca:====");
+
                 break;
                     
             case 3:
@@ -466,6 +506,7 @@ import java.util.Scanner;
                             j1.exibir();
                         }
                     }
+                    System.out.println("====Fim da busca:====");
                 break;
                     
             case 4:
@@ -485,6 +526,7 @@ import java.util.Scanner;
                             j1.exibir();
                         }
                     }
+                    System.out.println("====Fim da busca:====");
                 break;
                 
             default:
@@ -678,7 +720,7 @@ import java.util.Scanner;
             Jogo j1 = new Jogo();
             j1.setDescricao("Jogo de tiro em primeira pessoa, possui multiplayer e modo história");
             j1.setFaixaEtaria(14);
-            j1.setGenero("acao");
+            j1.setGenero("fps");
             j1.setPreco(120);
             j1.setTitulo("Halo Reach");
             listaJ.add(j1);
@@ -693,7 +735,7 @@ import java.util.Scanner;
         atribuiJpadrao();
         
         do{
-        System.out.println("\n\n Selecione a opcao que deseja utilizar: \n\t ◉ 1- Cadastrar \n\t ◉ 2- Buscar \n\t ◉ 3- Excluir \n\t ◉ 4- Outros \n\t ◉ 0- Finalizar Programa");
+        System.out.println("\n\n============================================================== \n   Selecione a opcao que deseja utilizar: \n\t ◉ 1- Cadastrar \n\t ◉ 2- Buscar \n\t ◉ 3- Excluir \n\t ◉ 4- Outros \n\t ◉ 0- Finalizar Programa");
         opcao = teclado.nextInt();
         switch(opcao){
             case 1 /*cadastro*/:
