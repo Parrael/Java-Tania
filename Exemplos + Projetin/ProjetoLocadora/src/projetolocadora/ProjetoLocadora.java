@@ -365,7 +365,7 @@ import java.util.Scanner;
             }
             }
            
-    //MÉTODOS PARA PESQUISA - TERMINAR 
+    //MÉTODOS PARA PESQUISA 
     public static void pesquisaCliente(){
         String pesquisar;
         do{
@@ -624,7 +624,7 @@ import java.util.Scanner;
         }
         
         public static void produtoExibeMediaPreco(){
-        System.out.println("\n A idade media dos clientes é de: " + produtoCalculaMediaPreco() + " anos");
+        System.out.println("\n A media de precos dos produtos é de: R$" + produtoCalculaMediaPreco());
     }
         public void produtoAcimaDaMediaPreco(){
             float media = produtoCalculaMediaPreco();
@@ -639,7 +639,7 @@ import java.util.Scanner;
             count++;
             }
         }
-            System.out.println("\nQuantidade de produtos acima da media de preco é de: " + count);
+            System.out.println("\nQuantidade de produtos acima da media de preco é de: R$" + count);
         }
         
         //Métodos de atribuições padrões:
