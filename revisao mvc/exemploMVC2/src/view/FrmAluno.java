@@ -98,6 +98,11 @@ private AlunoController alControle;
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExcluirMouseClicked(evt);
+            }
+        });
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -235,7 +240,7 @@ private AlunoController alControle;
     }//GEN-LAST:event_btnMostrarTodosActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-      
+
          
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -256,6 +261,14 @@ private AlunoController alControle;
         txtProcurar.setText(raSelecionado);
         
     }//GEN-LAST:event_tblAlunoMouseClicked
+
+    private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
+        int raProcurado = Integer.parseInt(txtProcurar.getText());
+        alControle.excluir(raProcurado);
+        
+        this.atualizaGrid();
+        this.limpaCampos();
+    }//GEN-LAST:event_btnExcluirMouseClicked
 
     /**
      * @param args the command line arguments

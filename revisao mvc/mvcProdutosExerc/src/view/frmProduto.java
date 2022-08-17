@@ -5,16 +5,17 @@
  */
 package view;
 
-/**
- *
- * @author aluno
- */
-public class frmProduto extends javax.swing.JFrame {
+import control.ProdutoController;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Produto;
 
-    /**
-     * Creates new form frmProduto
-     */
+public class frmProduto extends javax.swing.JFrame {
+    protected ProdutoController pController;
+    
     public frmProduto() {
+        pController = new ProdutoController();
         initComponents();
     }
 
@@ -34,7 +35,7 @@ public class frmProduto extends javax.swing.JFrame {
         txtDesc = new javax.swing.JTextField();
         txtPreco = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProduto = new javax.swing.JTable();
         btnCadastra = new javax.swing.JButton();
         txtAcao = new javax.swing.JTextField();
         btnExcluir = new javax.swing.JButton();
@@ -57,7 +58,7 @@ public class frmProduto extends javax.swing.JFrame {
 
         txtPreco.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -65,18 +66,43 @@ public class frmProduto extends javax.swing.JFrame {
                 "Código", "Descrição", "Preço"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProdutoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblProduto);
 
         btnCadastra.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnCadastra.setText("Cadastrar");
+        btnCadastra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastraActionPerformed(evt);
+            }
+        });
 
         txtAcao.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtAcao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtAcaoMouseClicked(evt);
+            }
+        });
 
         btnExcluir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnExcluir.setText("Excluir");
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExcluirMouseClicked(evt);
+            }
+        });
 
         btnBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,9 +169,70 @@ public class frmProduto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraActionPerformed
+        String codigo = this.txtCod.getText();
+        String descricao = this.txtDesc.getText();
+        double preco = Double.parseDouble(this.txtPreco.getText());
+        pController.cadastrar(codigo, descricao, preco);
+        
+        //Atualizando Grid
+        this.atualizaGrid();
+        this.limpaCampos();
+
+    }//GEN-LAST:event_btnCadastraActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+      String codigoProc = this.txtAcao.getText();
+      Produto p =  pController.busca(codigoProc);
+      JOptionPane.showMessageDialog(null, p.getCodigo() + "\n" + p.getDescricao() + "\n" + p.getPreco() + "\n" );
+      
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtAcaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAcaoMouseClicked
+ 
+        
+    }//GEN-LAST:event_txtAcaoMouseClicked
+
+    private void tblProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutoMouseClicked
+        int linhaSelecionada = this.tblProduto.getSelectedRow();
+        String codigoSelecionada = this.tblProduto.getValueAt(linhaSelecionada, 0).toString();
+        txtAcao.setText(codigoSelecionada);
+
+    }//GEN-LAST:event_tblProdutoMouseClicked
+
+    private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
+        String codProcurado = txtAcao.getText();
+        pController.excluir(codProcurado);
+        
+        
+        this.atualizaGrid();
+        this.limpaCampos();
+        
+    }//GEN-LAST:event_btnExcluirMouseClicked
+
+    public void limpaCampos(){
+        txtCod.setText("");
+        txtDesc.setText("");
+        txtPreco.setText("");
+        this.txtCod.requestFocus();
+    }
+    
+        public void atualizaGrid(){
+        ArrayList<Produto> lista = pController.mostraTodos();
+        DefaultTableModel dados = new DefaultTableModel ();
+        dados.setNumRows(0);
+        dados.addColumn("Codigo");
+        dados.addColumn("Descricao");
+        dados.addColumn("Preco");
+        //percorre Array
+        for (Produto p: lista){
+            dados.addRow(new Object[]{p.getCodigo(),p.getDescricao(), p.getPreco()});
+    }
+    
+    
+        tblProduto.setModel(dados);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -183,10 +270,10 @@ public class frmProduto extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastra;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCod;
     private javax.swing.JLabel lblDesc;
     private javax.swing.JLabel lblPreco;
+    private javax.swing.JTable tblProduto;
     private javax.swing.JTextField txtAcao;
     private javax.swing.JTextField txtCod;
     private javax.swing.JTextField txtDesc;

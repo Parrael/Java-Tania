@@ -26,4 +26,12 @@ public Aluno mostrarEspecifico (int ra)
     }
     return null;
 }
+    public void excluir (int ra){
+        for(Aluno a: listaAl){
+            if(a.getRa()==ra){
+             listaAl.remove(a);
+             break;
+        }
+    }
+}
 }
