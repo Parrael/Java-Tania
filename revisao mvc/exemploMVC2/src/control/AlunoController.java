@@ -17,7 +17,7 @@ public void cadastrar (int ra, String nome) throws SQLException
     aldao.inserirAluno(a1);
 }      
 public ArrayList<Aluno> mostraTodos()
-{
+{ 
     return listaAl;
 }
 public Aluno mostrarEspecifico (int ra)

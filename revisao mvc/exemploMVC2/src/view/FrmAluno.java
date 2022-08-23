@@ -6,7 +6,10 @@
 package view;
 
 import control.AlunoController;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Aluno;
@@ -220,7 +223,11 @@ private AlunoController alControle;
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         String nome = this.txtNome.getText();
         int ra = Integer.parseInt(this.txtRa.getText());
+    try {
         alControle.cadastrar(ra, nome);
+    } catch (SQLException ex) {
+        Logger.getLogger(FrmAluno.class.getName()).log(Level.SEVERE, null, ex);
+    }
         
         //Atualizando Grid
         this.atualizaGrid();

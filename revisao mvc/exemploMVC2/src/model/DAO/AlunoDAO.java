@@ -8,18 +8,28 @@ import java.sql.SQLException;
 /*import java.util.ArrayList;*/
 import model.Aluno;
 
-public class AlunoDAO {
-    Connection con;
+    public class AlunoDAO {
+        Connection con;
     
     public void inserirAluno(Aluno al) throws SQLException
     { 
-            con = new Conexao().getConnection();
-            String sql = "Insert into TesteJava (RA,NOME) values (?,?)";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, al.getRa());
-            stmt.setString(2, al.getNome());
-            stmt.execute();
-            stmt.close();
-            con.close();    
+        con = new Conexao().getConnection();
+        String sql = "Insert into TesteJava (RA,NOME) values (?,?)";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, al.getRa());
+        stmt.setString(2, al.getNome());
+        stmt.execute();
+        stmt.close();
+        con.close();    
     }
+    public void excluir (int ra) throws SQLException {
+        con = new Conexao().getConnection();
+        String sql = "DELETE FROM TesteJava WHERE RA = ?";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, ra);
+        stmt.execute();
+        stmt.close();
+        con.close();
+    }
+    
 }
