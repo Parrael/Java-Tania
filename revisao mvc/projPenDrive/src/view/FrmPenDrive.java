@@ -4,17 +4,25 @@
  * and open the template in the editor.
  */
 package view;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import control.PenDriveController;
+import model.PenDrive;
 /**
  *
  * @author aluno
  */
 public class FrmPenDrive extends javax.swing.JFrame {
-
+    protected PenDriveController pdControle;
     /**
      * Creates new form FrmPenDrive
      */
     public FrmPenDrive() {
+        pdControle = new PenDriveController();
         initComponents();
     }
 
@@ -82,6 +90,11 @@ public class FrmPenDrive extends javax.swing.JFrame {
 
         btnBuscar.setText("Buscar");
         btnBuscar.setName("btnBuscar"); // NOI18N
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
         btnExcluir.setName("btnExcluir"); // NOI18N
@@ -194,14 +207,72 @@ public class FrmPenDrive extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void atualizaGrid() throws SQLException{
+        ArrayList<PenDrive> listaPD = pdControle.mostrar("");
+        DefaultTableModel dados = new DefaultTableModel ();
+        dados.setNumRows(0);
+        dados.addColumn("Armazenamento");
+        dados.addColumn("Marca");
+        dados.addColumn("Preco");
+        dados.addColumn("Garantia");
+        dados.addColumn("Codigo");
+        //percorre Array
+        for (PenDrive p: listaPD){
+            dados.addRow(new Object[]{p.getArmazenamento(),p.getMarca(), p.getPreco(), p.getGarantia(), p.getCodigo()});
+    }
+        jTable1.setModel(dados);
+    }
+    
+    public void limpaCampos(){
+        this.txtArmazenamento.setText("");
+        this.txtCodigo.setText("");
+        this.txtGarantia.setText("");
+        this.txtMarca.setText("");
+        this.txtPreco.setText("");
+        this.txtAcao.setText("");
+        this.txtArmazenamento.requestFocus();
+    }
+    
     private void txtAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAcaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAcaoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        int armazenamento = Integer.parseInt(this.txtArmazenamento.getText());
+        String marca = this.txtMarca.getText();
+        double preco = Double.parseDouble(this.txtPreco.getText());
+        int garantia = Integer.parseInt(this.txtGarantia.getText());
+        String codigo = this.txtCodigo.getText();
+        
+        try{
+            pdControle.cadastar(armazenamento, marca, preco, garantia, codigo);
+            JOptionPane.showMessageDialog(null, "Inserção realizada com sucesso!");
+            atualizaGrid();
+            limpaCampos();
+        }catch (SQLException ex){
+            Logger.getLogger(FrmPenDrive.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Falha no cadastro!");
+        }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        ArrayList<PenDrive> listaPD;
+        String desejado = this.txtAcao.getText();
+        
+        try{
+            listaPD = pdControle.mostrar(desejado);
+            DefaultTableModel dados = (DefaultTableModel) jTable1.getModel();
+            dados.setNumRows(0);
+            for(PenDrive p: listaPD){
+                dados.addRow(new Object[]{p.getArmazenamento(),p.getMarca(), p.getPreco(), p.getGarantia(), p.getCodigo()});
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmPenDrive.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Não foi possivel encontrar este codigo, tente novamente!");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments

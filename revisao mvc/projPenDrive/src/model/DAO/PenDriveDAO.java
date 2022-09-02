@@ -35,7 +35,7 @@ public class PenDriveDAO {
         stmt.close();
         con.close();
     }
-    public ArrayList<PenDrive> mostrarEspecifico (String codigo) throws SQLException{
+    public ArrayList<PenDrive> mostrar (String codigo) throws SQLException{
         ResultSet rs;
         ArrayList<PenDrive> listaP = new ArrayList();
         con = new Conexao().getConnection();
