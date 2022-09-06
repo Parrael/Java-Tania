@@ -24,6 +24,11 @@ public class FrmPenDrive extends javax.swing.JFrame {
     public FrmPenDrive() {
         pdControle = new PenDriveController();
         initComponents();
+        try {
+            atualizaGrid();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmPenDrive.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -98,6 +103,11 @@ public class FrmPenDrive extends javax.swing.JFrame {
 
         btnExcluir.setText("Excluir");
         btnExcluir.setName("btnExcluir"); // NOI18N
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -272,7 +282,34 @@ public class FrmPenDrive extends javax.swing.JFrame {
             Logger.getLogger(FrmPenDrive.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Não foi possivel encontrar este codigo, tente novamente!");
         }
+        try {
+            atualizaGrid();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmPenDrive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            limpaCampos();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        String desejado = this.txtAcao.getText();
+        
+        try{
+            pdControle.excluir(desejado);
+            DefaultTableModel dados = (DefaultTableModel) jTable1.getModel();
+            dados.setNumRows(0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmPenDrive.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Não foi possivel encontrar este codigo, tente novamente!");
+        }
+        
+        try {
+            atualizaGrid();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmPenDrive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        limpaCampos();
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments

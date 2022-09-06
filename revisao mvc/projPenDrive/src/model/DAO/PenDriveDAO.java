@@ -13,6 +13,8 @@ import model.PenDrive;
 public class PenDriveDAO {
     Connection con;
     
+    
+    
     public void inserirPenDrive (PenDrive p1) throws SQLException{
         con = new Conexao().getConnection();
         String sql = "Insert into PenDrive (ARMAZENAMENTO, MARCA, PRECO, GARANTIA, CODIGO) values (?,?,?,?,?)";
@@ -30,7 +32,7 @@ public class PenDriveDAO {
         con = new Conexao().getConnection();
         String sql = "DELETE FROM PenDrive WHERE codigo = ?";
         PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(5, codigo);
+        stmt.setString(1, codigo);
         stmt.execute();
         stmt.close();
         con.close();
@@ -54,9 +56,9 @@ public class PenDriveDAO {
             }
             stmt.close();
         }else{
-            String sql = "SELECT * FROM PenDrive WHERE NOME like ?";
+            String sql = "SELECT * FROM PenDrive WHERE CODIGO like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(5, codigo);
+            stmt.setString(1, codigo);
             rs = stmt.executeQuery();
             while(rs.next()){
                 int armazenamento = rs.getInt("ARMAZENAMENTO");

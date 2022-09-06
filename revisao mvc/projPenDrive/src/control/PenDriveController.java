@@ -15,7 +15,7 @@ public class PenDriveController {
     }
     
     public void cadastar(int armazenamento, String marca, double preco, int garantia, String codigo) throws SQLException{
-        PenDrive p1 = new PenDrive();
+        PenDrive p1 = new PenDrive(armazenamento, marca, preco, garantia, codigo);
         PenDriveDAO pddao = new PenDriveDAO();
         pddao.inserirPenDrive(p1);  
     }
