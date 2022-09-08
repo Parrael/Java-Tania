@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 /*import java.util.ArrayList;*/
 import model.PenDrive;
+import view.FrmPenDrive;
 
 public class PenDriveDAO {
     Connection con;
@@ -37,11 +38,11 @@ public class PenDriveDAO {
         stmt.close();
         con.close();
     }
-    public ArrayList<PenDrive> mostrar (String codigo) throws SQLException{
+    public ArrayList<PenDrive> mostrar (String desejado, int tipo) throws SQLException{
         ResultSet rs;
         ArrayList<PenDrive> listaP = new ArrayList();
         con = new Conexao().getConnection();
-        if(codigo.isEmpty()){
+        if(desejado.isEmpty()){
             String sql = "SELECT * FROM PenDrive";
             PreparedStatement stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
@@ -55,10 +56,40 @@ public class PenDriveDAO {
                 listaP.add(p1);
             }
             stmt.close();
-        }else{
+        }else if(tipo == 1) {//codigo
             String sql = "SELECT * FROM PenDrive WHERE CODIGO like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, codigo);
+            stmt.setString(1, desejado);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                int armazenamento = rs.getInt("ARMAZENAMENTO");
+                String marca = rs.getString("MARCA");
+                double preco = rs.getDouble("PRECO");
+                int garantia = rs.getInt("GARANTIA");
+                String cod = rs.getString("CODIGO");
+                PenDrive p1 = new PenDrive(armazenamento, marca, preco, garantia, cod);
+                listaP.add(p1);
+            }
+            stmt.close();
+        }else if(tipo == 2){ //armazenamento
+            String sql = "SELECT * FROM PenDrive WHERE ARMAZENAMENTO like ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, desejado);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                int armazenamento = rs.getInt("ARMAZENAMENTO");
+                String marca = rs.getString("MARCA");
+                double preco = rs.getDouble("PRECO");
+                int garantia = rs.getInt("GARANTIA");
+                String cod = rs.getString("CODIGO");
+                PenDrive p1 = new PenDrive(armazenamento, marca, preco, garantia, cod);
+                listaP.add(p1);
+            }
+            stmt.close();
+        }else if(tipo == 3){ //marca
+            String sql = "SELECT * FROM PenDrive WHERE MARCA like ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, desejado);
             rs = stmt.executeQuery();
             while(rs.next()){
                 int armazenamento = rs.getInt("ARMAZENAMENTO");
@@ -71,6 +102,7 @@ public class PenDriveDAO {
             }
             stmt.close();
         }
+        
         con.close();
         return listaP;
     } 

@@ -57,6 +57,9 @@ public class FrmPenDrive extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtAcao = new javax.swing.JTextField();
+        rdArmazenamento = new javax.swing.JRadioButton();
+        rdMarca = new javax.swing.JRadioButton();
+        rdCodigo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,6 +144,16 @@ public class FrmPenDrive extends javax.swing.JFrame {
             }
         });
 
+        rdArmazenamento.setText("Armazenamento");
+        rdArmazenamento.setName("rdArmazenamento"); // NOI18N
+
+        rdMarca.setText("Marca");
+        rdMarca.setName("rdMarca"); // NOI18N
+
+        rdCodigo.setSelected(true);
+        rdCodigo.setText("Codigo");
+        rdCodigo.setName("rdCodigo"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,7 +184,13 @@ public class FrmPenDrive extends javax.swing.JFrame {
                                     .addComponent(txtPreco)
                                     .addComponent(txtGarantia)
                                     .addComponent(txtCodigo)))
-                            .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rdArmazenamento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rdMarca)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rdCodigo)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,7 +227,12 @@ public class FrmPenDrive extends javax.swing.JFrame {
                     .addComponent(txtAcao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir)
                     .addComponent(btnBuscar))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdArmazenamento)
+                    .addComponent(rdMarca)
+                    .addComponent(rdCodigo))
+                .addContainerGap(111, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -218,7 +242,7 @@ public class FrmPenDrive extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     public void atualizaGrid() throws SQLException{
-        ArrayList<PenDrive> listaPD = pdControle.mostrar("");
+        ArrayList<PenDrive> listaPD = pdControle.mostrar("", 4);
         DefaultTableModel dados = new DefaultTableModel ();
         dados.setNumRows(0);
         dados.addColumn("Armazenamento");
@@ -241,6 +265,19 @@ public class FrmPenDrive extends javax.swing.JFrame {
         this.txtPreco.setText("");
         this.txtAcao.setText("");
         this.txtArmazenamento.requestFocus();
+        /*this.rdCodigo.;*/
+    }
+    
+    public int defineBoolean(){
+        int tipo = 1;
+        if(rdCodigo.isSelected()){
+             tipo = 1;
+        }else if(rdArmazenamento.isSelected()){
+             tipo = 2;
+        }else if (rdMarca.isSelected()){
+             tipo = 3;
+        }
+        return tipo;
     }
     
     private void txtAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAcaoActionPerformed
@@ -268,10 +305,11 @@ public class FrmPenDrive extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         ArrayList<PenDrive> listaPD;
+        int tipo = defineBoolean();
         String desejado = this.txtAcao.getText();
         
         try{
-            listaPD = pdControle.mostrar(desejado);
+            listaPD = pdControle.mostrar(desejado, tipo);
             DefaultTableModel dados = (DefaultTableModel) jTable1.getModel();
             dados.setNumRows(0);
             for(PenDrive p: listaPD){
@@ -358,6 +396,9 @@ public class FrmPenDrive extends javax.swing.JFrame {
     private javax.swing.JLabel lblGarantia;
     private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblPreco;
+    protected javax.swing.JRadioButton rdArmazenamento;
+    public javax.swing.JRadioButton rdCodigo;
+    protected javax.swing.JRadioButton rdMarca;
     private javax.swing.JTextField txtAcao;
     private javax.swing.JTextField txtArmazenamento;
     private javax.swing.JTextField txtCodigo;

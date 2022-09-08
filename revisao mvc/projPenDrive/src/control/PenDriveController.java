@@ -20,10 +20,10 @@ public class PenDriveController {
         pddao.inserirPenDrive(p1);  
     }
     
-    public ArrayList<PenDrive> mostrar (String codigo) throws SQLException
+    public ArrayList<PenDrive> mostrar (String codigo, int tipo) throws SQLException
     {
         PenDriveDAO pddao = new PenDriveDAO();
-        return pddao.mostrar(codigo);
+        return pddao.mostrar(codigo, tipo);
     }
     public void excluir (String codigo) throws SQLException
     {
