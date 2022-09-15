@@ -7,10 +7,27 @@ import java.util.ArrayList;
 
 
 public class PenDriveController {
-    public void cadastar() throws SQLException{
-        PenDrive p1 = new PenDrive();
+    protected ArrayList<PenDrive> listaPD;
+    
+    public PenDriveController()
+    {
+        listaPD = new ArrayList<>();
+    }
+    
+    public void cadastar(int armazenamento, String marca, double preco, int garantia, String codigo) throws SQLException{
+        PenDrive p1 = new PenDrive(armazenamento, marca, preco, garantia, codigo);
         PenDriveDAO pddao = new PenDriveDAO();
         pddao.inserirPenDrive(p1);  
     }
     
+    public ArrayList<PenDrive> mostrar (String desejado, int tipo) throws SQLException
+    {
+        PenDriveDAO pddao = new PenDriveDAO();
+        return pddao.mostrar(desejado, tipo);
+    }
+    public void excluir (String codigo) throws SQLException
+    {
+        PenDriveDAO pddao = new PenDriveDAO();
+        pddao.excluir(codigo);
+    }
 }
