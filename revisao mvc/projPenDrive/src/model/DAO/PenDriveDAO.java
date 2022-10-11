@@ -56,7 +56,7 @@ public class PenDriveDAO {
                 listaP.add(p1);
             }
             stmt.close();
-        }else if(tipo == 1) {//codigo
+        }else if(tipo == 1 && !desejado.isEmpty()) {//codigo
             String sql = "SELECT * FROM PenDrive WHERE CODIGO like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, desejado);
@@ -71,7 +71,7 @@ public class PenDriveDAO {
                 listaP.add(p1);
             }
             stmt.close();
-        }else if(tipo == 2){ //armazenamento
+        }else if(tipo == 2 && !desejado.isEmpty()){ //armazenamento
             String sql = "SELECT * FROM PenDrive WHERE ARMAZENAMENTO like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, desejado);
@@ -86,7 +86,7 @@ public class PenDriveDAO {
                 listaP.add(p1);
             }
             stmt.close();
-        }else if(tipo == 3){ //marca
+        }else if(tipo == 3 && !desejado.isEmpty()){ //marca
             String sql = "SELECT * FROM PenDrive WHERE MARCA like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, desejado);
