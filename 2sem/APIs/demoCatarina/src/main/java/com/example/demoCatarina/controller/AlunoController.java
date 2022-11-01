@@ -19,6 +19,7 @@ public class AlunoController {
     public List<Aluno> buscarTodos(){
         return  alRepo.findAll();
     }
+
     @GetMapping("/aluno/{ra}")
     public Optional<Aluno> buscarPorRa(@PathVariable(value = "ra") int ra){
         return alRepo.findById(ra);
@@ -28,4 +29,15 @@ public class AlunoController {
     public void inserirAlunos(@RequestBody Aluno al){
         alRepo.save(al);
     }
+
+    @DeleteMapping("/removerAluno")
+    public void removerAluno(@RequestBody Aluno al){
+        alRepo.delete(al);
+    }
+
+    @PutMapping("/atualizarAluno")
+    public void atualizarALuno(@RequestBody Aluno al){
+        alRepo.save(al);
+    }
+
 }

@@ -3,12 +3,12 @@ public class Animal {
     private String nome;
     private int idade;
 
-    //Métodos
+   
     public void emitirSom(){
-        //som de cada animal
+        
     }    
     
-    //Getters e Setters 
+  
     public String getNome() {
         return nome;
     }

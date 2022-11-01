@@ -3,11 +3,11 @@ public class Cavalo extends Animal{
     
     @Override
     public void emitirSom(){
-        System.out.println("irrinhó!");
+        System.out.println("cavalo");
         
     }
     
     public void correr(){
-        System.out.println("O vacalo está correndo, IIIRRRRÁÁÁÁ");
+        System.out.println("o cavalo corre");
     }
 }
