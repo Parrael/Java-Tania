@@ -5,13 +5,11 @@ package exearraylist;
 public class Poupanca extends Conta {
     private double taxa;
 
-    //metodos
     @Override
-    public void mostra(){
+    public void print(){
         System.out.println("é poupança");
     }
     
-    //getters e setters
     public double getTaxa() {
         return taxa;
     }

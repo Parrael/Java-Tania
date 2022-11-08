@@ -4,13 +4,11 @@ package exearraylist;
 public class Corrente extends Conta{
     private double limite;
 
-    //metodos
+
     @Override
-    public void mostra(){
-        System.out.println("é corrente");
+    public void print(){
+        System.out.println("corrente");
     }
-    
-    //getters e setters
     public double getLimite() {
         return limite;
     }
