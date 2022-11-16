@@ -40,7 +40,7 @@ public class ClienteController {
     }
 
     @GetMapping("/buscaCodigo/{codigo}")
-    public Optional<Cliente> buscarPorCodigo(@PathVariable(value = "codigo") int codigo){
+    public Optional<Cliente> buscarCodigo(@PathVariable(value = "codigo") int codigo){
         return CliRepo.findById(codigo);
     }
 
@@ -48,5 +48,17 @@ public class ClienteController {
     public List<Cliente> buscaEmail(@PathVariable(value = "email") String email){
         return CliRepo.findByEmail(email);
     }
-
+    @GetMapping("/buscaCodigoMaior/{codigo}")
+    public List<Cliente> buscaCodigoMaior(@PathVariable(value = "codigo") int codigo){
+        return CliRepo.findByCodigoMaior(codigo);
+    }
+    @GetMapping("/buscaNomeInicia/{nome}")
+    public List<Cliente> buscaNomeInicia(@PathVariable(value = "nome") String nome){
+        return CliRepo.findByNomeInicia(nome);}
+    @GetMapping("/buscaEmailInicia/{nome}")
+    public List<Cliente> buscaEmailInicia(@PathVariable(value = "email") String email){
+        return CliRepo.findByEmailInicia(email);}
+    @GetMapping("/buscaNomeIniciaEEmailInicia/{nome}/{email}")
+    public List<Cliente> buscaNomeIniciaEEmailInicia(@PathVariable(value = "nome") String nome, @PathVariable(value = "email") String email){
+        return CliRepo.findByNomeIniciaEEmailInicia(nome, email);}
 }
