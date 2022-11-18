@@ -18,7 +18,7 @@ public class ClienteController {
         CliRepo.save(cl);
     }
 
-    @PostMapping("/atualizaCliente")
+    @PutMapping("/atualizaCliente")
     public void atualizaCliente(@RequestBody Cliente cl){
         CliRepo.save(cl);
     }

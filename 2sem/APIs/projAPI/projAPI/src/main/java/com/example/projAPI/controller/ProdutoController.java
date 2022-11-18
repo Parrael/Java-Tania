@@ -5,7 +5,6 @@ import com.example.projAPI.model.Produto;
 import com.example.projAPI.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -62,7 +61,7 @@ public class ProdutoController {
     public List<Produto> buscaDescricaoInicia(@PathVariable(value = "descricao") String descricao){
         return ProRepo.findByDescricaoInicia(descricao);
     }
-    @GetMapping("/buscaMarca/{marca}")
+    @GetMapping("/buscaMarcaInicia/{marca}")
     public List<Produto> buscaMarcaInicia(@PathVariable(value = "marca") String marca){
         return ProRepo.findByMarcaInicia(marca);
     }
