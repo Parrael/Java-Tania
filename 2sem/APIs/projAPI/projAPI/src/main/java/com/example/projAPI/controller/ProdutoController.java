@@ -54,7 +54,7 @@ public class ProdutoController {
     public List<Produto> buscaPrecoMaior(@PathVariable(value = "preco") double preco){
         return ProRepo.findByPrecoMaior(preco);
     }
-    @GetMapping("/buscaPreco/{preco}")
+    @GetMapping("/buscaPrecoMenor/{preco}")
     public List<Produto> buscaPrecoMenor(@PathVariable(value = "preco") double preco){
         return ProRepo.findByPrecoMenor(preco);
     }
