@@ -13,13 +13,13 @@ public interface ProdutoRepository extends JpaRepository <Produto,Integer>{
     //Busca de Descrição:
     @Query(value = "select p from Produto p where p.descricao like ?1")
     List<Produto> findByDescricao(String descricao);
-    @Query(value = "select p from Produto p where p.descricao like %?1%")
+    @Query(value = "select p from Produto p where p.descricao like ?1%")
     List<Produto> findByDescricaoInicia(String descricao);
 
     //Busca de Marca:
     @Query(value = "select p from Produto p where p.marca like ?1")
     List<Produto> findByMarca(String marca);
-    @Query(value = "select p from Produto p where p.marca like %?1%")
+    @Query(value = "select p from Produto p where p.marca like ?1%")
     List<Produto> findByMarcaInicia(String marca);
 
     //Busca de Preços:
@@ -33,10 +33,10 @@ public interface ProdutoRepository extends JpaRepository <Produto,Integer>{
     List<Produto> findByPrecoMenor(double preco);
 
     //Buscas Duplas:
-    @Query(value = "select p from Produto p where p.descricao like %?1% and like p.marca like %?2%")
+    @Query(value = "select p from Produto p where p.descricao like %?1% and p.marca like %?2%")
     List<Produto> findByDescricaoIniciaEMarcaInicia(String descricao, String Marca);
 
-    @Query(value = "select p from Produto p where p.descricao like %?1% and like p.preco < %?2%")
+    @Query(value = "select p from Produto p where p.descricao like %?1% and p.preco < ?2")
     List<Produto> findByDescricaoIniciaEPrecoMenor(String descricao, double preco);
 }
 
